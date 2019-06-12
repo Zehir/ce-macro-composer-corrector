@@ -1,3 +1,5 @@
+// Renavisio-Dialing-Corrector
+
 const xapi = require('xapi');
 const BreakException = {};
 
@@ -8,7 +10,8 @@ const config = {
         'renavisio.codian02',
         'renavisio.codian03',
         'renavisio.codian04',
-        'renavisio.codian05'
+        'renavisio.codian05',
+        'g2j.easyvision'
     ]
 };
 
@@ -168,6 +171,19 @@ const transformList = {
         name: "Pont Codian IP direct H323 mauvais protocole",
         matchRemote: /^194\.214\.202\.185$/,
         replaceRemote: "194.214.202.185",
+        matchProcol: 'SIP',
+        replaceProcol: 'H323'
+    }],
+    'g2j.easyvision': [{
+        name: "EasyVisio avec numero salle",
+        matchRemote: /^(\d{6})@79\.98\.59\.44$/,
+        replaceRemote: "$1@79.98.59.44",
+        matchProcol: 'SIP',
+        replaceProcol: 'H323'
+    },{
+        name: "EasyVisio par IP",
+        matchRemote: /^79\.98\.59\.44$/,
+        replaceRemote: "79\.98\.59\.44",
         matchProcol: 'SIP',
         replaceProcol: 'H323'
     }]
